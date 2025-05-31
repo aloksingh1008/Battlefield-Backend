@@ -1,9 +1,11 @@
-// index.js
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors()); // ← CORS middleware
 app.use(express.json());
+
 
 const serverDetailsData = {
   status: {
@@ -56,6 +58,7 @@ const serverDetailsData = {
   },
   mapRotationLabel: "MAP ROTATION"
 };
+
 
 app.get('/', (req, res) => {
   res.send(JSON.stringify(serverDetailsData));
